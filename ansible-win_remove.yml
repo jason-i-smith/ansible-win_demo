@@ -1,0 +1,28 @@
+---
+- name: User Setup
+  hosts: windows10
+  become_method: runas
+  become_user: system
+
+  tasks:
+  - name: remove Development folder
+    become: yes
+    win_file:
+      path: C:\Development
+      state: absent
+
+  - name: remove local user
+    become: yes
+    win_user:
+      name: '{{item.name}}'
+      state: absent
+    with_items:
+    - name: User1
+    - name: User2
+
+  - name: remove local group
+    become: yes
+    win_group:
+      name: LocalGroup
+      state: absent
+...
