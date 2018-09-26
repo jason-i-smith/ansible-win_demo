@@ -18,7 +18,7 @@
       password: '{{item.password}}'
       groups: LocalGroup
       update_password: on_create
-      password_never_expired: yes
+      password_never_expires: yes
     with_items:
     - name: User1
       password: Password1
@@ -40,7 +40,7 @@
       type: allow
       user: LocalGroup
 
-  - name: remove parent inheritance of Development folder
+  - name: set parent inheritance of Development folder
     become: yes
     win_acl_inheritance:
       path: C:\Development
