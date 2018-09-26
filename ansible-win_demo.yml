@@ -1,6 +1,7 @@
 ---
 - name: User Setup
   hosts: windows10
+  become: yes
 
   tasks:
   - name: create local group to contain new users
@@ -40,4 +41,3 @@
       reorganize: yes
       state: absent
 ...
-
