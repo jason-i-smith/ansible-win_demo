@@ -1,0 +1,39 @@
+---
+- name: create local group to contain new users
+  win_group:
+    name: LocalGroup
+    description: Allow access to C:\Development folder
+
+- name: create local user
+  win_user:
+    name: '{{item.name}}'
+    password: '{{item.password}}'
+    groups: LocalGroup
+    update_password: no
+    password_never_expired: yes
+  with_items:
+  - name: User1
+    password: Password1
+  - name: User2
+    password: Password2
+
+- name: create Development folder
+  win_file:
+    path: C:\Development
+    state: directory
+
+- name: set ACL of Development folder
+  win_acl:
+    path: C:\Development
+    rights: FullControl
+    state: present
+    type: allow
+    user: LocalGroup
+
+- name: remove parent inheritance of Development folder
+  win_acl_inheritance:
+    path: C:\Development
+    reorganize: yes
+    state: absent
+...
+
