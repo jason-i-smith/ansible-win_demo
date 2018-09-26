@@ -1,0 +1,14 @@
+---
+- hosts: windows
+  gather_facts: no
+  become_method: runas
+
+  tasks:
+  - name: default user
+    win_shell: whoami
+
+  - name: administrator
+    become: yes
+    become_user: system
+    win_shell: whoami
+...
