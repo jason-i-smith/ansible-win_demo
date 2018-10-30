@@ -1,0 +1,22 @@
+---
+- name: Short Ansible Playbook for RHEL
+  hosts: linux
+  become: true
+
+  tasks:
+  - name: Install httpd
+    yum:
+      name: httpd
+      state: latest
+  - name: Start and Enabled httpd
+    service:
+      name: httpd
+      enabled: true
+      state: started
+  - name: Create index.html
+    copy:
+      content: "You have reached {{ ansible_fqdn}}.  It is managed by Ansible Tower."
+      dest: /var/www/html/index.html
+
+...
+
