@@ -4,12 +4,6 @@
   become: true
 
   tasks:
-  - name: Register RHEL Subscription
-    redhat_subscription:
-      state: present
-      username: "{{ rhel_user }}"
-      password: "{{ rhel_pass }}"
-      auto_attach: true
   - name: Install httpd
     yum:
       name: httpd
