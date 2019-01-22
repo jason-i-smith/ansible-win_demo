@@ -1,6 +1,6 @@
 ---
 - name: User Setup
-  hosts: windows10
+  hosts: all
   become: yes
   become_method: runas
   become_user: system
