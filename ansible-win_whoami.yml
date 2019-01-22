@@ -6,9 +6,11 @@
   tasks:
   - name: Which user am I?
     win_shell: whoami
+    changed_when: false
 
   - name: Am I the system account?
     become: yes
     become_user: system
     win_shell: whoami
+    changed_when: false
 ...
