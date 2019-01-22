@@ -1,14 +1,13 @@
 ---
 - name: Collect whoami info for default and become_user
-  hosts: windows10
   gather_facts: no
   become_method: runas
 
   tasks:
-  - name: default user
+  - name: Which user am I?
     win_shell: whoami
 
-  - name: administrator
+  - name: Am I the system account?
     become: yes
     become_user: system
     win_shell: whoami
