@@ -1,5 +1,6 @@
 ---
 - name: Collect whoami info for default and become_user
+  hosts: all
   gather_facts: no
   become_method: runas
 
