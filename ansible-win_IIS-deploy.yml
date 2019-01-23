@@ -15,7 +15,7 @@
   - name: Ensure latest index.html file is present
     win_copy:
       content: "Hello World!"
-      dest: c:\www\index.html
+      dest: c:\inetpub\wwwroot\index.html
 
   handlers:
   - name: Restart IIS
