@@ -1,0 +1,26 @@
+---
+- name: IIS Deployment
+  hosts: all
+  become: yes
+  become_method: runas
+  become_user: system
+
+  tasks:
+  - name: Ensure IIS Server is present
+    win_feature:
+      name: Web-Server
+      state: present
+    notify: Restart IIS
+
+  - name: Ensure latest index.html file is present
+    win_copy:
+      src: files/index.html
+      dest: c:\www\
+
+handlers:
+- name: Restart IIS
+  win_service:
+    name: IIS Admin Service
+    state: restarted
+
+...
