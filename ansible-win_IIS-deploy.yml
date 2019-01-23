@@ -14,13 +14,13 @@
 
   - name: Ensure latest index.html file is present
     win_copy:
-      src: files/index.html
-      dest: c:\www\
+      content: "Hello World!"
+      dest: c:\www\index.html
 
-handlers:
-- name: Restart IIS
-  win_service:
-    name: IIS Admin Service
-    state: restarted
+  handlers:
+  - name: Restart IIS
+    win_service:
+      name: IIS Admin Service
+      state: restarted
 
 ...
