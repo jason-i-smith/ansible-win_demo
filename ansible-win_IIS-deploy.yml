@@ -13,10 +13,15 @@
       state: present
     register: iis_result
 
+  - name: print iis_result
+    debug:
+      var: iis_result
+    tag: debug
+
   - name: Is reboot required?
     debug:
       msg: "Host reboot is required. Notifying 'Reboot host' handler."
-    when: iis_result.feature_result.reboot_required == true
+    when: iis_result.reboot_required == true
     notify: Reboot host
 
   - name: Ensure latest index.html file is present
@@ -29,6 +34,6 @@
 
   - name: Reboot host
     reboot:
-    when: iis_result.feature_result.reboot_required == true
+    when: iis_result.reboot_required == true
 
 ...
