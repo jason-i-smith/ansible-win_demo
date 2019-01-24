@@ -7,22 +7,20 @@
 
 
   tasks:
+
   - name: Ensure IIS Server is present
     win_feature:
       name: Web-Server
       state: present
     register: iis_result
-
+    notify: 
+    - Reboot notification
+    - Reboot host
+    
   - name: print iis_result
     debug:
       var: iis_result
     tags: debug
-
-  - name: Is reboot required?
-    debug:
-      msg: "Host reboot is required. Notifying 'Reboot host' handler."
-    when: iis_result.reboot_required == true
-    notify: Reboot host
 
   - name: Ensure latest index.html file is present
     win_copy:
@@ -31,6 +29,11 @@
 
 
   handlers:
+
+  - name: Reboot notification
+      msg: "Host reboot is required. Notifying 'Reboot host' handler."
+    when: iis_result.reboot_required == true
+
 
   - name: Reboot host
     win_reboot:
