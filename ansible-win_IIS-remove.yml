@@ -7,10 +7,10 @@
 
   tasks:
 
-  - name: Stop IIS Service
-    win_service:
-      name: IIS Admin Service
-      state: stopped
+#  - name: Stop IIS Service
+#    win_service:
+#      name: IIS Admin Service
+#      state: stopped
 
   - name: Disable IIS
     win_feature:
