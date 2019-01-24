@@ -5,6 +5,7 @@
   become_method: runas
   become_user: system
 
+
   tasks:
 
   - name: Disable IIS
@@ -14,9 +15,14 @@
     register: iis_result
 
   - name: Is reboot required?
-    msg: "Host reboot is required."
+    debug: 
+      msg: "Host reboot is required. Notifying 'Reboot host' handler."
     when: iis_result.feature_result.reboot_required == true
+    notify: Reboot host
 
+
+  handlers:
+          
   - name: Reboot host
     reboot:
     when: iis_result.feature_result.reboot_required == true

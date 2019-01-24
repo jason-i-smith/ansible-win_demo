@@ -1,0 +1,3 @@
+  - name: Reboot host
+    reboot:
+    when: iis_result.feature_result.reboot_required == true
