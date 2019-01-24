@@ -7,14 +7,18 @@
 
   tasks:
 
-#  - name: Stop IIS Service
-#    win_service:
-#      name: IIS Admin Service
-#      state: stopped
-
   - name: Disable IIS
     win_feature:
       name: Web-Server
       state: absent
+    register: iis_result
+
+  - name: Is reboot required?
+    msg: "Host reboot is required."
+    when: iis_result.feature_result.reboot_required == true
+
+  - name: Reboot host
+    reboot:
+    when: iis_result.feature_result.reboot_required == true
 
 ...
