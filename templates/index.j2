@@ -1,3 +1,11 @@
-You've reached the {{ ansible_fqdn }} webserver.  Deployed by Ansible on {{ ansible_date_time.date }}.
+<!DOCTYPE html>
+<html>
+<body>
 
-{{ web_content }}
+<h1>{{ web_content }}</h1>
+
+<p>You've reached the {{ ansible_fqdn }} webserver.</p>
+<p>It was deployed by Ansible Tower on {{ ansible_date_time.date }}.</p>
+
+</body>
+</html>
