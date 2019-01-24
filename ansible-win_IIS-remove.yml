@@ -8,6 +8,11 @@
 
   tasks:
 
+  - name: Remove index.html
+    win_file:
+      path: C:\inetpub\wwwroot\index.html
+      state: absent
+
   - name: Disable IIS
     win_feature:
       name: Web-Server
@@ -28,7 +33,7 @@
           
   - name: Reboot notification
     debug: 
-      msg: "Host reboot is required. Notifying 'Reboot host' handler."
+      msg: "Host reboot is required after removing IIS."
     when: iis_result.reboot_required == true
 
   - name: Reboot host
