@@ -32,7 +32,7 @@
 
   - name: Reboot notification
     debug:
-      msg: "Host reboot is required. Notifying 'Reboot host' handler."
+      msg: "Host reboot is required."
     when: iis_result.reboot_required == true
 
 
