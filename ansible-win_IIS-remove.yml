@@ -17,7 +17,7 @@
   - name: print iis_result
     debug:
       var: iis_result
-    tag: debug
+    tags: debug
 
   - name: Is reboot required?
     debug: 
