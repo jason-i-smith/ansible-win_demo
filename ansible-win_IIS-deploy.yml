@@ -38,7 +38,6 @@
 
   - name: Reboot host
     win_reboot:
-      test_command: whoami
     when: iis_result.reboot_required == true
 
 ...
