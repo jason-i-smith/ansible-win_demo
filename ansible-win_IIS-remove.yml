@@ -1,0 +1,20 @@
+---
+- name: IIS Removal
+  hosts: all
+  become: yes
+  become_method: runas
+  become_user: system
+
+  tasks:
+
+  - name: Stop IIS Service
+    win_service:
+      name: IIS Admin Service
+      state: stopped
+
+  - name: Disable IIS
+    win_feature:
+      name: Web-Server
+      state: absent
+
+...
