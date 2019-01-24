@@ -23,8 +23,8 @@
     tags: debug
 
   - name: Ensure latest index.html file is present
-    win_copy:
-      content: "{{ web_content }}"
+    win_template:
+      src: templates/index.j2
       dest: c:\inetpub\wwwroot\index.html
 
 
