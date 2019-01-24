@@ -29,7 +29,7 @@
   handlers:
           
   - name: Reboot host
-    reboot:
+    win_reboot:
     when: iis_result.reboot_required == true
 
 ...
