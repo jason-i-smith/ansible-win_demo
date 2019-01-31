@@ -1,0 +1,25 @@
+---
+- name: Short Ansible Playbook for RHEL
+  hosts: linux
+  become: true
+
+  tasks:
+
+  - name: Remove index.html
+    file:
+      path: /var/www/html/index.html
+      state: absent
+      
+
+  - name: Stop httpd
+    service:
+      name: httpd
+      state: stopped
+
+  - name: Uninstall httpd
+    yum:
+      name: httpd
+      state: absent
+
+...
+
