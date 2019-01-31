@@ -10,12 +10,6 @@
       path: /var/www/html/index.html
       state: absent
       
-
-  - name: Stop httpd
-    service:
-      name: httpd
-      state: stopped
-
   - name: Uninstall httpd
     yum:
       name: httpd
