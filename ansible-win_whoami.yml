@@ -1,8 +1,7 @@
 ---
 - name: Collect whoami info for default and become_user
-  hosts: windows
-  gather_facts: yes
-  fact_path: 'c:\scripts'
+  hosts: all
+  gather_facts: no
   become_method: runas
 
   tasks:
