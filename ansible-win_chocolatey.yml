@@ -23,6 +23,7 @@
     win_chocolatey:
       name: notepadplusplus
       state: absent
+    when: applist is search("notepadplusplus")
 
   - name: Install notepad++ v7.1
     win_chocolatey:
