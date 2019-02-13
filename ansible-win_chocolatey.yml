@@ -5,6 +5,16 @@
 
   tasks:
 
+  - name: What is installed?
+    win_shell:
+      name: choco list --local-only
+    register: choco-local-list
+
+  - name: Debug: choco-local-list
+    debug:
+      var: choco-local-list
+    tags: debug
+
   - name: Install git
     win_chocolatey:
       name: git
