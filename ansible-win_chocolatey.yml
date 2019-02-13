@@ -7,7 +7,7 @@
 
   - name: What is installed?
     win_shell:
-      name: choco list --local-only
+      name: "choco list --local-only"
     register: choco-local-list
 
   - name: 'Debug: choco-local-list'
