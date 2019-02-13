@@ -1,0 +1,19 @@
+---
+- name: Install Windows Packages
+  hosts: windows
+  fact_path: 'C:\scripts'
+
+  tasks:
+
+  - name: Remove git
+    win_chocolatey:
+      name: git
+      state: absent
+
+  - name: Remove notepad++
+    win_chocolatey:
+      name: notepadplusplus
+      state: absent
+
+...
+
