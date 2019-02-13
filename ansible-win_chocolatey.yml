@@ -6,8 +6,7 @@
   tasks:
 
   - name: What is installed?
-    win_command:
-      name: 'choco list --local-only'
+    win_shell: 'choco list --local-only'
     register: choco-local-list
 
   - name: 'Debug: choco-local-list'
