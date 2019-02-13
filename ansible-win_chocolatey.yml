@@ -23,7 +23,7 @@
     win_chocolatey:
       name: notepadplusplus
       state: absent
-    when: applist.stdout_lines | search("notepadplusplus")
+    when: applist.stdout_lines is search("notepadplusplus")
 
   - name: Install notepad++ v7.1
     win_chocolatey:
