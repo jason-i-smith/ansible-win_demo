@@ -7,11 +7,11 @@
 
   - name: What is installed?
     win_shell: 'choco list --local-only'
-    register: choco-local-list
+    register: applist
 
   - name: 'Debug: choco-local-list'
     debug:
-      var: choco-local-list
+      var: applist
     tags: debug
 
   - name: Install git
