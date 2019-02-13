@@ -10,6 +10,11 @@
       name: git
       state: present
 
+  - name: Remove notepad++
+    win_chocolatey:
+      name: notepadplusplus
+      state: absent
+
   - name: Install notepad++ v7.1
     win_chocolatey:
       name: notepadplusplus
