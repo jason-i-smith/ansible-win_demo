@@ -1,0 +1,19 @@
+---
+- name: Install Windows Packages
+  hosts: windows
+  fact_path: 'C:\scripts'
+
+  tasks:
+
+  - name: Install git
+    win_chocolatey:
+      name: git
+      state: present
+
+  - name: Install notepad++ v6.6
+    win_chocolatey:
+      name: notepadplusplus
+      version: '6.6'
+
+...
+
