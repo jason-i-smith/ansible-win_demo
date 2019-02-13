@@ -4,6 +4,7 @@
   become: yes
   become_method: runas
   become_user: system
+  fact_path:  'C:\scripts'
 
 
   tasks:
