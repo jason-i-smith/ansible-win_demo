@@ -10,7 +10,7 @@
       name: choco list --local-only
     register: choco-local-list
 
-  - name: Debug: choco-local-list
+  - name: 'Debug: choco-local-list'
     debug:
       var: choco-local-list
     tags: debug
