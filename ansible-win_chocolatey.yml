@@ -10,10 +10,11 @@
       name: git
       state: present
 
-  - name: Install notepad++ v6.6
+  - name: Install notepad++ v7.1
     win_chocolatey:
       name: notepadplusplus
-      version: '6.6'
+      version: '7.1'
+      state: present
 
 ...
 
