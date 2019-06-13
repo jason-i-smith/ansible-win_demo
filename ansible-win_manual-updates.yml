@@ -7,21 +7,21 @@
 
   - name: Get Windows Update Setting
     win_shell: '$r = Get-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\Au ; echo $r.NoAutoUpdate'
-    register: get-result
+    register: getresult
     changed_when: false
 
   - name: Is 'Windows Update Setting' set to manual?
     debug:
       msg: "Windows Update Setting is not currently set as 'manual'."
-    when: get-result.stdout_lines[0] != '1'
+    when: getresult.stdout_lines[0] != '1'
 
   - name: Use 'sconfig' to set manual updates
     win_shell: "$j = Start-Job { echo 5 M 15 }; sleep 15; Stop-Job $j.Id"
-    register: set-result
-    when: get-result.stdout_lines[0] != '1'
+    register: setresult
+    when: getresult.stdout_lines[0] != '1'
 
   - name: Print result variable
     debug:
-      var: set-result
+      var: setresult
 ...
 
