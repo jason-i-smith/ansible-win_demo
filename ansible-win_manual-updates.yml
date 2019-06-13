@@ -11,7 +11,7 @@
   
   - name: Print result variable
     debug:
-      var: result.stdout_lines.[0]
+      var: result.stdout_lines[0]
 
   - name: Is 'Windows Update Setting' set to manual?
     debug:
