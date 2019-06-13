@@ -4,8 +4,8 @@
 
   tasks:
 
-  - name: Get 'Windows Update Setting'
-    win_shell: "$r = Get-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\Au ; echo $r.NoAutoUpdate"
+  - name: Get Windows Update Setting
+    win_shell: '$r = Get-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\Au ; echo $r.NoAutoUpdate'
     register: result
   
   - name: Print result variable
