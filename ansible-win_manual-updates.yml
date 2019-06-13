@@ -1,6 +1,7 @@
 ---
 - name: Set manual updates
   hosts: all
+  gather_facts: no
 
   tasks:
 
