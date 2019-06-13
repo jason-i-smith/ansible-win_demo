@@ -1,0 +1,23 @@
+---
+- name: Set manual updates
+  hosts: all
+
+  tasks:
+
+  - name: Get 'Windows Update Setting'
+    win_shell: "$r = Get-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\Au ; echo $r.NoAutoUpdate"
+    register: result
+  
+  - name: Print result variable
+    debug:
+      var: result
+
+#  - name: Is 'Windows Update Setting' set to manual?
+#    debug:
+#      msg: "Windows Update Setting is currently not set to manual"
+#    when: result
+#
+#  - name: Use 'sconfig' to set manual updates
+#    win_shell: "$j = Start-Job { echo 5 M 15 }; sleep 15; Stop-Job $j.Id"
+...
+
