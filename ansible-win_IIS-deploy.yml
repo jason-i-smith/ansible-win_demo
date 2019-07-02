@@ -25,7 +25,7 @@
 
   - name: Ensure latest index.html file is present
     win_template:
-      src: templates/index.j2
+      src: templates/index.html.j2
       dest: c:\inetpub\wwwroot\index.html
 
 
