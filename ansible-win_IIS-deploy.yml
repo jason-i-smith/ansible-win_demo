@@ -14,10 +14,10 @@
       name: Web-Server
       state: present
     register: iis_result
-    notify: 
+    notify:
     - Reboot notification
     - Reboot host
-    
+
   - name: print iis_result
     debug:
       var: iis_result
@@ -34,11 +34,11 @@
   - name: Reboot notification
     debug:
       msg: "Host reboot is required."
-    when: iis_result.reboot_required == true
+    when: iis_result.reboot_required
 
 
   - name: Reboot host
     win_reboot:
-    when: iis_result.reboot_required == true
+    when: iis_result.reboot_required
 
 ...

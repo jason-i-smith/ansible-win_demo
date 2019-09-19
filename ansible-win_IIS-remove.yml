@@ -30,14 +30,14 @@
 
 
   handlers:
-          
+
   - name: Reboot notification
-    debug: 
+    debug:
       msg: "Host reboot is required after removing IIS."
-    when: iis_result.reboot_required == true
+    when: iis_result.reboot_required
 
   - name: Reboot host
     win_reboot:
-    when: iis_result.reboot_required == true
+    when: iis_result.reboot_required
 
 ...
