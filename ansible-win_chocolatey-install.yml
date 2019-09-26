@@ -1,7 +1,6 @@
 ---
 - name: Install Windows Packages
   hosts: windows
-  fact_path: 'C:\scripts'
 
   tasks:
 
