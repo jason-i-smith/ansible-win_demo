@@ -1,0 +1,23 @@
+---
+- name: Install Windows Packages
+  hosts: windows
+
+  tasks:
+
+  - name: Gather Chocolatey Facts
+    win_chocolatey_facts:
+    # CLI equivalent: choco list --local-only
+
+  - name: Install putty
+    win_chocolatey:
+      name: putty.portable
+      state: latest
+
+  - name: Install notepad++ v7.6.3
+    win_chocolatey:
+      name: notepadplusplus.install
+      version: 7.6.3
+      state: present
+
+...
+

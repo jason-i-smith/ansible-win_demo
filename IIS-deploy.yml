@@ -1,11 +1,14 @@
 ---
 - name: IIS Deployment
-  hosts: all
+  hosts: windows
   become: yes
   become_method: runas
   become_user: system
   fact_path:  'C:\scripts'
-
+  vars_prompt:
+  - name: web_content
+    prompt: "Enter a website header"
+    private: no
 
   tasks:
 
@@ -14,31 +17,40 @@
       name: Web-Server
       state: present
     register: iis_result
-    notify:
-    - Reboot notification
-    - Reboot host
+    notify: reboot
 
   - name: print iis_result
     debug:
       var: iis_result
-    tags: debug
+      verbosity: 2
 
   - name: Ensure latest index.html file is present
     win_template:
       src: templates/index.html.j2
       dest: c:\inetpub\wwwroot\index.html
 
+  - name: Smoke test
+    win_uri:
+      url: http://{{ ansible_facts['fqdn'] }}
+      return_content: yes
+    register: this
+    failed_when: "'deployed by Ansible' not in this.content"
+
+  - name: print test.content
+    debug:
+      var: this.content
+      verbosity: 2
 
   handlers:
-
   - name: Reboot notification
     debug:
       msg: "Host reboot is required."
+    listen: reboot
     when: iis_result.reboot_required
-
 
   - name: Reboot host
     win_reboot:
+    listen: reboot
     when: iis_result.reboot_required
 
 ...

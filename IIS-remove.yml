@@ -1,6 +1,6 @@
 ---
 - name: IIS Removal
-  hosts: all
+  hosts: windows
   become: yes
   become_method: runas
   become_user: system
@@ -19,14 +19,12 @@
       state: absent
     register: iis_result
     notify:
-    - Reboot notification
-    - Reboot host
+    - reboot
 
   - name: print iis_result
     debug:
       var: iis_result
-    tags: debug
-
+      verbosity: 2
 
 
   handlers:
@@ -34,10 +32,12 @@
   - name: Reboot notification
     debug:
       msg: "Host reboot is required after removing IIS."
+    listen: reboot
     when: iis_result.reboot_required
 
   - name: Reboot host
     win_reboot:
+    listen: reboot
     when: iis_result.reboot_required
 
 ...

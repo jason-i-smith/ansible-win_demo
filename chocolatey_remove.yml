@@ -1,18 +1,17 @@
 ---
-- name: Install Windows Packages
+- name: Remove Windows Packages
   hosts: windows
 
   tasks:
 
-  - name: Remove git
+  - name: Remove putty
     win_chocolatey:
-      name: git
+      name: putty.portable
       state: absent
 
   - name: Remove notepad++
     win_chocolatey:
-      name: notepadplusplus
+      name: notepadplusplus.install
       state: absent
-
 ...
 
