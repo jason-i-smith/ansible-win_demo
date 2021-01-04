@@ -45,6 +45,7 @@
 [windows]
 activedirectory
 win2016
+win2016-clone
 
 [rhel]
 server01

@@ -10,7 +10,13 @@
     - name: Running software_installed script
       script: files/software_installed_2.ps1
       register: output
+      changed_when: output.rc
 
     - name: Powershell script output
       debug:
         var: output.stdout_lines
+
+    - name: Debug - output
+      debug:
+        var: output
+        verbosity: 2
