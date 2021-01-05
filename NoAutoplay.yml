@@ -1,0 +1,18 @@
+---
+- name: No Autoplay for Non-Volumes
+  hosts: windows
+  gather_facts: false
+
+  tasks:
+  - name: Check registry settings
+    win_shell: Get-itemproperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer -Name "NoAutoplayfornonVolume"
+    register: output
+    changed_when: false
+
+  - name: Debug - Print output
+    debug:
+      msg: "No Autoplay for Non-Volume is set as expected.  STIG has been applied."
+    when: '"NoAutoplayfornonVolume : 1" in output.stdout_lines'
+
+...
+
