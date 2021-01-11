@@ -10,10 +10,15 @@
     changed_when: false
     failed_when: false
 
-  - name: Debug - Print output
+  - name: Debug - Print Standard Out
     debug:
       msg: "No Autoplay for Non-Volume is set as expected.  STIG has been applied."
     when: '"NoAutoplayfornonVolume : 1" in output.stdout_lines'
+
+  - name: Debug - Print Standard Error
+    debug:
+      msg: "Autoplay for Non-Volume is not set!  STIG has NOT been applied."
+    when: output.stderr_lines
 
 ...
 
