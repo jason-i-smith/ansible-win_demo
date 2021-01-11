@@ -8,6 +8,7 @@
     win_shell: Get-itemproperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer -Name "NoAutoplayfornonVolume"
     register: output
     changed_when: false
+    failed_when: false
 
   - name: Debug - Print output
     debug:
