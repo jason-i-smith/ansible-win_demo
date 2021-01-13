@@ -17,7 +17,7 @@
 
   - name: Debug - Print Standard Error
     debug:
-      msg: "Autoplay for Non-Volume is not set!  STIG has NOT been applied."
+      msg: "No Autoplay for Non-Volume is NOT set!  STIG has NOT been applied."
     when: output.stderr_lines
 
 ...
